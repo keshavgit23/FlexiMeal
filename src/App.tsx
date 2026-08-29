@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 import { LandingPage } from "./pages/LandingPage/LandingPage.tsx";
 
 type UserRole = "visitor" | "student" | "owner";
@@ -20,6 +21,7 @@ function App() {
       <main>
         <LandingPage />
       </main>
+      <Footer/>
     </div>
   );
 }
