@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
+import { LandingPage } from "./pages/LandingPage/LandingPage.tsx";
 
 type UserRole = "visitor" | "student" | "owner";
 
@@ -15,6 +16,10 @@ function App() {
         onTabChange={setActiveTab}
         onRoleChange={setCurrentRole}
       />
+
+      <main>
+        <LandingPage />
+      </main>
     </div>
   );
 }
