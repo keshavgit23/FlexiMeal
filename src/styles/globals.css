@@ -122,3 +122,19 @@ ol {
   background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }
+/* 
+nav a:hover {
+  color: red;
+} */
+.nav-link {
+  color: var(--color-text-secondary);
+  transition: color 150ms ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link-active {
+  color: var(--color-primary);
+}
