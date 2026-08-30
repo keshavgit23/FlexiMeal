@@ -14,9 +14,9 @@ interface NavbarProps {
 const visitorLinks = [
     { label: "Home", path: "/" },
     { label: "Explore Messes", path: "/explore-messes" },
-    { label: "How It Works", path: "/how-it-works" },
+    // { label: "How It Works", path: "/how-it-works" },
     { label: "For Students", path: "/for-students" },
-    { label: "For Mess Owners", path: "/for-owners" },
+    { label: "For Mess Owners", path: "/for-messes" },
 ];
 
 function Navbar({
@@ -47,7 +47,7 @@ function Navbar({
     }, []);
 
     return (
-        <header className="relative">
+        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-x-8">
                     {/* Brand */}
@@ -73,7 +73,7 @@ function Navbar({
                             </span>
 
                             <p className="-mt-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">
-                                Smart Mess Tech
+                                Choice Made Simple
                             </p>
                         </div>
                     </Link>

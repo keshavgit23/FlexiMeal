@@ -9,7 +9,7 @@
  *   import heroBg from "../../../assets/hero-bg.jpg";
  *   import heroThali from "../../../assets/hero-thali.jpg";
  */
-
+import { useNavigate } from "react-router-dom";
 // ---------------------------------------------------------------------------
 // Asset URLs — single source of truth, matching the reference HTML exactly.
 // ---------------------------------------------------------------------------
@@ -21,23 +21,19 @@ const HERO_THALI_URL =
 // ---------------------------------------------------------------------------
 // Props
 // ---------------------------------------------------------------------------
-interface HeroProps {
-  /** Navigate to a tab (e.g. "explore", "owner-dash"). */
-  onTabChange?: (tab: string) => void;
-  /** Switch the active user role. */
-  onRoleChange?: (role: "visitor" | "student" | "owner") => void;
-}
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-function Hero({ onTabChange, onRoleChange }: HeroProps) {
-  const handleFindMeal = () => onTabChange?.("explore");
+function Hero() {
+  const handleFindMeal = () => {
+    navigate("/explore-messes");
+  };
 
   const handleBecomePartner = () => {
-    onRoleChange?.("owner");
-    onTabChange?.("owner-dash");
+    navigate("/for-messes");
   };
+  const navigate = useNavigate();
 
   return (
     <section className="relative overflow-hidden">
