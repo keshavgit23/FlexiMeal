@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useNavigate, Link } from "react-router-dom";
 interface TimelineItem {
   id: string;
   time: string;
@@ -10,6 +10,7 @@ interface TimelineItem {
   ctaTextColor: string;
   decorCircleBg: string;
   borderColor: string;
+  ctaRoute: string;
 }
 
 const TIMELINE_CARDS: TimelineItem[] = [
@@ -23,6 +24,8 @@ const TIMELINE_CARDS: TimelineItem[] = [
     ctaTextColor: 'text-brand-saffron text-[#FF6B00]',
     decorCircleBg: 'bg-orange-100',
     borderColor: 'border-orange-100/80',
+    ctaRoute: "/explore-messes",
+
   },
   {
     id: 'dinner',
@@ -34,6 +37,7 @@ const TIMELINE_CARDS: TimelineItem[] = [
     ctaTextColor: 'text-brand-tomato text-[#DC2626]',
     decorCircleBg: 'bg-red-100',
     borderColor: 'border-red-100/80',
+    ctaRoute: "/for-students"
   },
   {
     id: 'next-day',
@@ -45,10 +49,12 @@ const TIMELINE_CARDS: TimelineItem[] = [
     ctaTextColor: 'text-purple-600',
     decorCircleBg: 'bg-purple-100',
     borderColor: 'border-purple-100/80',
+    ctaRoute: "/for-messes"
   },
 ];
 
 export const EmotionalHungerTimeline: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 bg-brand-warmBg bg-[#FFFDF9]" id="emotional-hunger-timeline">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 text-center gap-4">
@@ -77,18 +83,29 @@ export const EmotionalHungerTimeline: React.FC = () => {
                 <span className={`px-3 py-1 rounded-lg ${card.timeBadgeBg} text-white font-extrabold text-xs inline-block`}>
                   {card.time}
                 </span>
+                <div className="flex flex-col gap-3 mt-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mt-4 font-heading font-['Outfit',sans-serif]">
+                    {card.title}
+                  </h3>
 
-                <h3 className="text-2xl font-bold text-gray-900 mt-4 font-heading font-['Outfit',sans-serif]">
-                  {card.title}
-                </h3>
+                  <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                    {card.description}
+                  </p>
+                  <div
+                    className={`mt-6 flex items-center justify-between text-xs font-bold ${card.ctaTextColor}`}
+                  >
+                    <Link
+                      to={card.ctaRoute}
+                      className="flex items-center gap-2"
+                    >
+                      <span>{card.ctaText}</span>
 
-                <p className="text-gray-600 text-sm mt-2 leading-relaxed">
-                  {card.description}
-                </p>
-
-                <div className={`mt-6 flex items-center justify-between text-xs font-bold ${card.ctaTextColor}`}>
-                  <span>{card.ctaText}</span>
-                  <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition duration-200" aria-hidden="true" />
+                      <i
+                        className="fa-solid fa-arrow-right group-hover:translate-x-1 transition duration-200"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
