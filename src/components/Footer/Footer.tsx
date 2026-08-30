@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import BrandLogo from "../../assets/BrandLogo.jpeg";
 
 interface FooterLink {
     label: string;
@@ -21,19 +23,19 @@ const FOOTER_LINK_GROUPS: FooterLinkGroup[] = [
     {
         title: 'Product',
         links: [
-            { label: 'Explore Messes', href: '#' },
-            { label: 'How It Works', href: '#' },
-            { label: 'For Students', href: '#' },
-            { label: 'For Mess Owners', href: '#' },
+            { label: 'Explore Messes', href: '/explore-messes' },
+            // { label: 'How It Works', href: '#' },
+            { label: 'For Students', href: '/for-students' },
+            { label: 'For Mess Owners', href: '/for-messes' },
         ],
     },
     {
         title: 'For Students',
         links: [
-            { label: 'Pay-As-You-Go', href: '#' },
-            { label: 'Flexible Subscriptions', href: '#' },
-            { label: 'Skip Meal Credits', href: '#' },
-            { label: 'Campus Partners', href: '#' },
+            { label: 'Pay-As-You-Go', href: '/for-students#payg-loop' },
+            { label: 'Flexible Subscriptions', href: '/for-students#monthly-loop' },
+            { label: 'Skip Meal Credits', href: '/for-students#bookings-history' },
+            { label: 'Campus Partners', href: '/explore-messes' },
         ],
     },
     {
@@ -53,35 +55,36 @@ const SOCIAL_LINKS: SocialLink[] = [
     { iconClass: 'fa-brands fa-x-twitter', href: '#', label: 'X (formerly Twitter)' },
 ];
 
-export interface FooterProps {
-    onNavigate?: (tab: string) => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-    const handleLinkClick = (label: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        if (onNavigate) {
-            if (label === 'Explore Messes') onNavigate('explore');
-            else if (label === 'How It Works') onNavigate('how-it-works');
-            else if (label === 'For Students') onNavigate('for-students');
-            else if (label === 'For Mess Owners') onNavigate('for-owners');
-        }
-    };
-
+export const Footer: React.FC = () => {
     return (
         <footer className="bg-gray-900 text-white pt-16 pb-12 border-t border-gray-800" id="main-footer">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
                     {/* Brand Column (Spans 2 cols) */}
                     <div className="col-span-2 flex flex-col gap-3">
-                        <a href="#" className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-tomato to-brand-saffron from-[#DC2626] to-[#FF6B00] flex items-center justify-center text-white text-lg font-bold">
-                                <i className="fa-solid fa-utensils" aria-hidden="true" />
+                        <Link
+                            to="/"
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    left: 0,
+                                    behavior: "smooth",
+                                });
+                            }}
+                            className="flex items-center gap-3 group"
+                        >
+                            <div className="w-12 h-12 overflow-hidden rounded-full shadow-sm transition-transform group-hover:scale-105">
+                                <img
+                                    src={BrandLogo}
+                                    alt="FlexiMeal"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
+
                             <span className="font-heading font-extrabold text-2xl font-['Outfit',sans-serif]">
                                 Flexi<span className="text-brand-saffron text-[#FF6B00]">Meal</span>
                             </span>
-                        </a>
+                        </Link>
                         <p className="text-xs text-gray-400 mt-3 max-w-sm leading-relaxed">
                             FlexiMeal is a smart mess-food platform giving students meal flexibility while empowering mess owners with predictive demand prediction.
                         </p>
@@ -99,13 +102,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                             <ul className="space-y-2 text-xs text-gray-400">
                                 {group.links.map((link) => (
                                     <li key={link.label}>
-                                        <a
+                                        {/* <a
                                             href={link.href}
                                             onClick={(e) => handleLinkClick(link.label, e)}
                                             className="hover:!text-white transition duration-150"
                                         >
                                             {link.label}
-                                        </a>
+                                        </a> */}
+                                        <Link
+                                            to={link.href}
+                                            className="hover:!text-white transition duration-150"
+                                        >
+                                            {link.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

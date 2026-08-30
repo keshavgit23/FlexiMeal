@@ -1,18 +1,27 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
-export interface StudentFreedomProps {
-  onExplorePayAsYouGo?: () => void;
-  onViewStudentPlans?: () => void;
-  onSeeTomorrowMenu?: () => void;
+export const StudentFreedom: React.FC = () =>
+{
+  const navigate = useNavigate();
+   const handleExplorePayAsYouGo = () => {
+    navigate('/for-students#payg-loop');
+
+  setTimeout(() => {
+    document.getElementById('payg-loop')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }, 100);
+  };
+  const handleViewStudentPlans = () => {
+  navigate('/for-students#monthly-loop');
+};
+const handleSeeTomorrowMenu = () =>{
+  navigate('/explore-messes#campus-mess-explore-section');
 }
-
-export const StudentFreedom: React.FC<StudentFreedomProps> = ({
-  onExplorePayAsYouGo,
-  onViewStudentPlans,
-  onSeeTomorrowMenu,
-}) => {
   return (
-    <section className="py-20 bg-white" id="student-freedom">
+    <section className="py-5 bg-white" id="student-freedom">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-saffron text-[#FF6B00] font-extrabold text-xs tracking-widest uppercase bg-amber-100/80 px-4 py-1.5 rounded-full inline-block">
@@ -56,7 +65,7 @@ export const StudentFreedom: React.FC<StudentFreedomProps> = ({
             </div>
             <button
               type="button"
-              onClick={onExplorePayAsYouGo}
+              onClick={handleExplorePayAsYouGo}
               className="mt-8 w-full py-3.5 rounded-xl bg-gray-900 hover:bg-brand-saffron hover:bg-[#FF6B00] text-white font-extrabold text-xs transition"
             >
               Explore Pay-As-You-Go
@@ -95,7 +104,7 @@ export const StudentFreedom: React.FC<StudentFreedomProps> = ({
             </div>
             <button
               type="button"
-              onClick={onViewStudentPlans}
+              onClick={handleViewStudentPlans}
               className="mt-8 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-tomato to-brand-saffron from-[#DC2626] to-[#FF6B00] text-white font-extrabold text-xs hover:opacity-90 transition"
             >
               View Student Plans
@@ -131,7 +140,7 @@ export const StudentFreedom: React.FC<StudentFreedomProps> = ({
             </div>
             <button
               type="button"
-              onClick={onSeeTomorrowMenu}
+              onClick={handleSeeTomorrowMenu}
               className="mt-8 w-full py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-xs transition"
             >
               See Tomorrow's Menu
