@@ -1,28 +1,23 @@
-import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Footer from "./components/Footer/Footer.tsx";
-import { LandingPage } from "./pages/LandingPage/LandingPage.tsx";
-
-type UserRole = "visitor" | "student" | "owner";
+import AppRoutes from "./routes";
 
 function App() {
-  const [currentRole, setCurrentRole] = useState<UserRole>("visitor");
-  const [activeTab, setActiveTab] = useState("home");
-
   return (
-    <div className="min-h-screen">
-      <Navbar
-        currentRole={currentRole}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        onRoleChange={setCurrentRole}
-      />
+    <BrowserRouter>
+      <div className="min-h-screen">
+        <Navbar
+          currentRole="visitor"
+        />
 
-      <main>
-        <LandingPage />
-      </main>
-      <Footer/>
-    </div>
+        <main>
+          <AppRoutes />
+        </main>
+
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
