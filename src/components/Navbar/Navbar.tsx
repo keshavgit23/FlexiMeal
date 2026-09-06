@@ -20,7 +20,6 @@ const visitorLinks = [
 ];
 
 function Navbar({
-    currentRole,
     onRoleChange,
 }: NavbarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

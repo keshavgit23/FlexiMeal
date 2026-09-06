@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 interface TimelineItem {
   id: string;
   time: string;
@@ -54,7 +54,6 @@ const TIMELINE_CARDS: TimelineItem[] = [
 ];
 
 export const EmotionalHungerTimeline: React.FC = () => {
-  const navigate = useNavigate();
   return (
     <section className="py-20 bg-brand-warmBg bg-[#FFFDF9]" id="emotional-hunger-timeline">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 text-center gap-4">
